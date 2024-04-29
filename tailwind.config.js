@@ -40,7 +40,7 @@ module.exports = {
       },
       backgroundImage: {
         'hero-pattern':"url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
-        'hero-img': "url('E:\React\timetracer\src\data\hero.jpg')" ,
+        'hero-img': "url('https://img.freepik.com/free-vector/female-student-studying-with-laptop_74855-2396.jpg?t=st=1714360193~exp=1714363793~hmac=8a8bdd8cee89e5a3a2d05931db3c775a9365a4e5c7bbf95f5d675b88b1e7f932&w=996')" ,
       },
     },
   },
