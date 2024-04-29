@@ -29,6 +29,7 @@
     import { BiColorFill } from "react-icons/bi";
     import { IoMdContacts } from "react-icons/io";
     import { RiContactsLine, RiStockLine } from "react-icons/ri";
+    import { MdOutlineManageAccounts,MdOutlineMoveToInbox } from "react-icons/md";
     // import { MdOutlineSupervisorAccount } from "react-icons/md";
     import { HiOutlineRefresh } from "react-icons/hi";
     import { TiTick } from "react-icons/ti";
@@ -876,14 +877,14 @@
 
     export const userProfileData = [
     {
-        icon: <BsCurrencyDollar />,
+        icon: <MdOutlineManageAccounts />,
         title: "My Profile",
         desc: "Account Settings",
         iconColor: "#03C9D7",
         iconBg: "#E5FAFB",
     },
     {
-        icon: <BsShield />,
+        icon: <MdOutlineMoveToInbox />,
         title: "My Inbox",
         desc: "Messages & Emails",
         iconColor: "rgb(0, 194, 146)",
