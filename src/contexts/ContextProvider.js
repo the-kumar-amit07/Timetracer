@@ -22,14 +22,28 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scheduleData"));
+    // if (data) {
+    //   console.log("scheduleEvents:", data)
+    //   setScheduleEvents(data);
+    // }
+
     if (data) {
-      setScheduleEvents(data);
+      // Ensure each event object has a Status property
+      const updatedEvents = data.map(event => ({
+        ...event,
+        Status: event.Status || "Todo" // Assign "Todo" if Status is undefined
+      }));
+      setScheduleEvents(updatedEvents);
     }
   }, []);
 
   const saveToLocalStorage = (data) => {
-    localStorage.setItem("scheduleData", JSON.stringify(data));
-    console.log(saveToLocalStorage);
+    try {
+      console.log("Saving events to localStorage", data);
+      localStorage.setItem("scheduleData", JSON.stringify(data));
+    } catch (error) {
+      console.error("Error saving events to localStorage:", error);
+    }
   };
 
   const addEvent = (event) => {
@@ -37,6 +51,7 @@ export const ContextProvider = ({ children }) => {
     setScheduleEvents(updatedEvents);
     console.log("evnet i m trying to see",event);
     saveToLocalStorage(updatedEvents);
+  
   };
 
   const updateEvent = (updatedEvent) => {
@@ -48,9 +63,11 @@ export const ContextProvider = ({ children }) => {
   };
 
   const deleteEvent = (eventId) => {
+    console.log("Deleting event with Id:", eventId);
     const updatedEvents = scheduleEvents.filter(
       (event) => event.Id !== eventId
     );
+    console.log("Updated events after deletion:", updatedEvents);
     setScheduleEvents(updatedEvents);
     saveToLocalStorage(updatedEvents);
   };

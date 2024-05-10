@@ -12,7 +12,7 @@ import {
   Stacked,
   Pyramid,
   Customers,
-  Kanban,
+  TaskBoard,
   Area,
   Bar,
   Pie,
@@ -76,7 +76,7 @@ function App() {
               <Route path="/customers" element={<Customers />} />
 
               {/* Apps */}
-              <Route path="/kanban" element={<Kanban />} />
+              <Route path="/taskboard" element={<TaskBoard/>} />
               <Route path="/editor" element={<Editor />} />
               <Route path="/calendar" element={<Calender />} />
               <Route path="/color-picker" element={<ColorPicker />} />

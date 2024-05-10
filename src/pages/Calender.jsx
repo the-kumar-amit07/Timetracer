@@ -20,6 +20,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 const Calender = () => {
 const {scheduleEvents, addEvent, updateEvent, deleteEvent}= useStateContext();
 const handleEventClick = (args) => {
+  console.log("Event click args:", args);
   if (args && args.data && args.data[0]) {
     deleteEvent(args.data[0].Id);
   }

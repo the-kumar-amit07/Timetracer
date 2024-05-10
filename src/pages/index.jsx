@@ -3,7 +3,7 @@ export{ default as ColorPicker } from './ColorPicker';
 export{ default as Customers } from './Customers';
 export{ default as Editor } from './Editor';
 export{ default as Employees } from './Employees';
-export{ default as Kanban } from './Kanban';
+export{ default as TaskBoard} from './TaskBoard';
 export{ default as Orders } from './Orders';
 export{ default as Area } from './Charts/Area';
 export{ default as Bar } from './Charts/Bar';

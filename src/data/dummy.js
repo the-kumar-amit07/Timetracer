@@ -550,7 +550,7 @@
             icon: <AiOutlineCalendar />,
         },
         {
-            name: "Task Board",
+            name: "taskboard",
             icon: <BsKanban />,
         },
         {
