@@ -529,7 +529,7 @@
         title: "Teams",
         links: [
         {
-            name: "team status",
+            name: "orders",
             icon: <AiOutlineShoppingCart />,
         },
         {

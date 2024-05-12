@@ -19,7 +19,67 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("#03C9D7");
 
   const [scheduleEvents, setScheduleEvents] = useState([]);
+  
 
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0);
+    const [timerRunning, setTimerRunning] = useState(false);
+    const [recordedTimes, setRecordedTimes] = useState([]);
+  
+    useEffect(() => {
+      let intervalId;
+      if (timerRunning) {
+        intervalId = setInterval(() => {
+          if (seconds === 0) {
+            if (minutes === 0) {
+              clearInterval(intervalId);
+              setTimerRunning(false);
+              // Log time when countdown finishes
+              logTime();
+            } else {
+              setMinutes(minutes - 1);
+              setSeconds(59);
+            }
+          } else {
+            setSeconds(seconds - 1);
+          }
+        }, 1000);
+      } else {
+        clearInterval(intervalId);
+      }
+  
+      return () => clearInterval(intervalId);
+    }, [timerRunning, minutes, seconds]);
+  
+    const startTimer = () => {
+      setTimerRunning(true);
+    };
+  
+    const pauseTimer = () => {
+      setTimerRunning(false);
+    };
+  
+    const resetTimer = () => {
+      setTimerRunning(false);
+      setMinutes(0);
+      setSeconds(0);
+    };
+  
+    const logTime = () => {
+      const currentTime = new Date().toLocaleTimeString();
+      const newRecord = `${currentTime} - ${minutes}m ${seconds}s`;
+      const updatedRecords = [...recordedTimes, newRecord];
+      setRecordedTimes(updatedRecords);
+      localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
+    };
+  
+    const deleteRecord = (index) => {
+      const updatedRecords = recordedTimes.filter((_, i) => i !== index);
+      setRecordedTimes(updatedRecords);
+      localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
+    };
+
+  //for Schedule Data
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scheduleData"));
     // if (data) {
@@ -91,7 +151,17 @@ export const ContextProvider = ({ children }) => {
         screenSize,
         setScreenSize,
         currentColor,
-        setCurrentColor,scheduleEvents, addEvent, updateEvent, deleteEvent
+        setCurrentColor,scheduleEvents, addEvent, updateEvent, deleteEvent,
+        minutes,
+        seconds,
+        timerRunning,
+        recordedTimes,
+        startTimer,
+        pauseTimer,
+        resetTimer,
+        logTime,
+        deleteRecord,
+        setMinutes
       }}
     >
       {children}
