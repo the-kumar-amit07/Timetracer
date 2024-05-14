@@ -529,7 +529,7 @@
         title: "Teams",
         links: [
         {
-            name: "orders",
+            name: "teamstatus",
             icon: <AiOutlineShoppingCart />,
         },
         {
@@ -558,7 +558,7 @@
             icon: <FiEdit />,
         },
         {
-            name: "color-picker",
+            name: "timer",
             icon: <BiColorFill />,
         },
         ],

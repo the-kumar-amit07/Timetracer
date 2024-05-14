@@ -6,7 +6,6 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
   Home,
-  Orders,
   Calender,
   Employees,
   Stacked,
@@ -17,10 +16,11 @@ import {
   Bar,
   Pie,
   Financial,
-  ColorPicker,
   ColorMapping,
   Editor,
   Line,
+  Timer,
+  TeamStatus,
 } from "./pages";
 import {useStateContext} from './contexts/ContextProvider'
 import "./App.css";
@@ -71,7 +71,7 @@ function App() {
               <Route path="/home" element={<Home />} />
 
               {/* Pages */}
-              <Route path="/orders" element={<Orders />} />
+              <Route path="/teamstatus" element={<TeamStatus />} />
               <Route path="/employees" element={<Employees />} />
               <Route path="/customers" element={<Customers />} />
 
@@ -79,7 +79,7 @@ function App() {
               <Route path="/taskboard" element={<TaskBoard/>} />
               <Route path="/editor" element={<Editor />} />
               <Route path="/calendar" element={<Calender />} />
-              <Route path="/color-picker" element={<ColorPicker />} />
+              <Route path="/timer" element={<Timer />} />
 
               {/* Charts */}
               <Route path="/line" element={<Line />} />

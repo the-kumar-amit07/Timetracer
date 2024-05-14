@@ -1,9 +1,10 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react'
 import { useStateContext } from '../contexts/ContextProvider';
 import { PlayIcon, PauseIcon, RefreshIcon, SaveIcon, TrashIcon } from '@heroicons/react/outline';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-const Orders = () => {
+const Timer = () => {
   const {
     minutes,
     seconds,
@@ -79,6 +80,6 @@ const Orders = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Orders;
+export default Timer
