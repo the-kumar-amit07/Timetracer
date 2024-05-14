@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 import { PlayIcon, PauseIcon, RefreshIcon, SaveIcon, TrashIcon } from '@heroicons/react/outline';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 const Orders = () => {
   const {
@@ -45,7 +46,11 @@ const Orders = () => {
             onClick={handlePlayPauseClick}
             className="p-3 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2"
           >
-            {timerRunning ? <PauseIcon className="w-6 h-6" /> : <PlayIcon className="w-6 h-6" />}
+            {timerRunning ? <TooltipComponent content='Pause' position='Top'>
+              <PauseIcon className="w-6 h-6" />
+            </TooltipComponent> : <TooltipComponent content='Play' position='Top'>
+            <PlayIcon className="w-6 h-6" />
+              </TooltipComponent>}
           </button>
           <button onClick={resetTimer} className="p-3 rounded-full bg-red-500 text-white mr-2">
             <RefreshIcon className="w-6 h-6" />
