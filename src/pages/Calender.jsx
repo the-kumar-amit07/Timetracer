@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   ScheduleComponent,
   Day,
@@ -13,41 +13,39 @@ import {
 } from "@syncfusion/ej2-react-schedule";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { Header } from "../components";
-import { useStateContext } from '../contexts/ContextProvider'
-
-
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Calender = () => {
-const {scheduleEvents, addEvent, updateEvent, deleteEvent}= useStateContext();
-const handleEventClick = (args) => {
-  console.log("Event click args:", args);
-  if (args && args.data && args.data[0]) {
-    deleteEvent(args.data[0].Id);
-  }
-};
-  
+  const { scheduleEvents, addEvent, updateEvent, deleteEvent } =
+    useStateContext();
+  const handleEventClick = (args) => {
+    console.log("Event click args:", args);
+    if (args && args.data && args.data[0]) {
+      deleteEvent(args.data[0].Id);
+    }
+  };
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl ">
       <Header category="App" title="Calendar" />
-     
+
       <ScheduleComponent
-       height='650px' 
-       className="rounded-md" 
-       currentView="Month"
-       eventSettings={{ 
-        dataSource: scheduleEvents
-      }}
-      actionComplete={(args) => {
-        // Handle event creation and editing
-        if (args.requestType === "eventCreated") {
-          addEvent(args.data[0]);
-        } else if (args.requestType === "eventChanged") {
-          updateEvent(args.data[0]);
-        }
-      }}
-      eventClick={handleEventClick} // Event Click Handler
-       >
+        height="650px"
+        className="rounded-md"
+        currentView="Month"
+        eventSettings={{
+          dataSource: scheduleEvents,
+        }}
+        actionComplete={(args) => {
+          // Handle event creation and editing
+          if (args.requestType === "eventCreated") {
+            addEvent(args.data[0]);
+          } else if (args.requestType === "eventChanged") {
+            updateEvent(args.data[0]);
+          }
+        }}
+        eventClick={handleEventClick} // Event Click Handler
+      >
         <Inject
           services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
         />
@@ -55,7 +53,5 @@ const handleEventClick = (args) => {
     </div>
   );
 };
-
-
 
 export default Calender;

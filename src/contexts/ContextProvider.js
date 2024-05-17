@@ -19,65 +19,64 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("#03C9D7");
 
   const [scheduleEvents, setScheduleEvents] = useState([]);
-  
 
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
-    const [timerRunning, setTimerRunning] = useState(false);
-    const [recordedTimes, setRecordedTimes] = useState([]);
-  
-    useEffect(() => {
-      let intervalId;
-      if (timerRunning) {
-        intervalId = setInterval(() => {
-          if (seconds === 0) {
-            if (minutes === 0) {
-              clearInterval(intervalId);
-              setTimerRunning(false);
-              // Log time when countdown finishes
-              logTime();
-            } else {
-              setMinutes(minutes - 1);
-              setSeconds(59);
-            }
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [recordedTimes, setRecordedTimes] = useState([]);
+
+  useEffect(() => {
+    let intervalId;
+    if (timerRunning) {
+      intervalId = setInterval(() => {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(intervalId);
+            setTimerRunning(false);
+            // Log time when countdown finishes
+            logTime();
           } else {
-            setSeconds(seconds - 1);
+            setMinutes(minutes - 1);
+            setSeconds(59);
           }
-        }, 1000);
-      } else {
-        clearInterval(intervalId);
-      }
-  
-      return () => clearInterval(intervalId);
-    }, [timerRunning, minutes, seconds]);
-  
-    const startTimer = () => {
-      setTimerRunning(true);
-    };
-  
-    const pauseTimer = () => {
-      setTimerRunning(false);
-    };
-  
-    const resetTimer = () => {
-      setTimerRunning(false);
-      setMinutes(0);
-      setSeconds(0);
-    };
-  
-    const logTime = () => {
-      const currentTime = new Date().toLocaleTimeString();
-      const newRecord = `${currentTime} - ${minutes}m ${seconds}s`;
-      const updatedRecords = [...recordedTimes, newRecord];
-      setRecordedTimes(updatedRecords);
-      localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
-    };
-  
-    const deleteRecord = (index) => {
-      const updatedRecords = recordedTimes.filter((_, i) => i !== index);
-      setRecordedTimes(updatedRecords);
-      localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
-    };
+        } else {
+          setSeconds(seconds - 1);
+        }
+      }, 1000);
+    } else {
+      clearInterval(intervalId);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [timerRunning, minutes, seconds]);
+
+  const startTimer = () => {
+    setTimerRunning(true);
+  };
+
+  const pauseTimer = () => {
+    setTimerRunning(false);
+  };
+
+  const resetTimer = () => {
+    setTimerRunning(false);
+    setMinutes(0);
+    setSeconds(0);
+  };
+
+  const logTime = () => {
+    const currentTime = new Date().toLocaleTimeString();
+    const newRecord = `${currentTime} - ${minutes}m ${seconds}s`;
+    const updatedRecords = [...recordedTimes, newRecord];
+    setRecordedTimes(updatedRecords);
+    localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
+  };
+
+  const deleteRecord = (index) => {
+    const updatedRecords = recordedTimes.filter((_, i) => i !== index);
+    setRecordedTimes(updatedRecords);
+    localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
+  };
 
   //for Schedule Data
   useEffect(() => {
@@ -89,9 +88,9 @@ export const ContextProvider = ({ children }) => {
 
     if (data) {
       // Ensure each event object has a Status property
-      const updatedEvents = data.map(event => ({
+      const updatedEvents = data.map((event) => ({
         ...event,
-        Status: event.Status || "Todo" // Assign "Todo" if Status is undefined
+        Status: event.Status || "Todo", // Assign "Todo" if Status is undefined
       }));
       setScheduleEvents(updatedEvents);
     }
@@ -109,9 +108,8 @@ export const ContextProvider = ({ children }) => {
   const addEvent = (event) => {
     const updatedEvents = [...scheduleEvents, event];
     setScheduleEvents(updatedEvents);
-    console.log("evnet i m trying to see",event);
+    console.log("evnet i m trying to see", event);
     saveToLocalStorage(updatedEvents);
-  
   };
 
   const updateEvent = (updatedEvent) => {
@@ -151,7 +149,11 @@ export const ContextProvider = ({ children }) => {
         screenSize,
         setScreenSize,
         currentColor,
-        setCurrentColor,scheduleEvents, addEvent, updateEvent, deleteEvent,
+        setCurrentColor,
+        scheduleEvents,
+        addEvent,
+        updateEvent,
+        deleteEvent,
         minutes,
         seconds,
         timerRunning,
@@ -161,7 +163,7 @@ export const ContextProvider = ({ children }) => {
         resetTimer,
         logTime,
         deleteRecord,
-        setMinutes
+        setMinutes,
       }}
     >
       {children}
