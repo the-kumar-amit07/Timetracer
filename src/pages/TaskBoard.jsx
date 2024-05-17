@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useStateContext } from '../contexts/ContextProvider';
+import { Header } from "../components";
 
 function TaskBoard(){
   const { scheduleEvents, updateEvent } = useStateContext();
@@ -29,7 +30,8 @@ function TaskBoard(){
   };
 
   return (
-    <div className="flex justify-center mt-10 p-10">
+    <div div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+    <Header category="App" title="Task Board" />
       <div className="w-full max-w-5xl">
         <div className="grid grid-cols-3 gap-4">
           <div

@@ -29,12 +29,12 @@
     import { BiColorFill } from "react-icons/bi";
     import { IoMdContacts } from "react-icons/io";
     import { RiContactsLine, RiStockLine } from "react-icons/ri";
-    import { MdOutlineManageAccounts,MdOutlineMoveToInbox } from "react-icons/md";
+    import { MdOutlineManageAccounts,MdOutlineMoveToInbox,MdOutlineTimer } from "react-icons/md";
     // import { MdOutlineSupervisorAccount } from "react-icons/md";
     import { HiOutlineRefresh } from "react-icons/hi";
     import { TiTick } from "react-icons/ti";
     import { GiLouvrePyramid } from "react-icons/gi";
-    import { GrLocation } from "react-icons/gr";
+    import { GrLocation,GrStatusGood } from "react-icons/gr";
     import avatar from "./avatar.jpeg";
     import avatar2 from "./avatar2.jpg";
     import avatar3 from "./avatar3.png";
@@ -530,16 +530,16 @@
         links: [
         {
             name: "teamstatus",
-            icon: <AiOutlineShoppingCart />,
+            icon: <GrStatusGood />,
         },
         {
             name: "team members",
             icon: <IoMdContacts />,
         },
-        {
-            name: "customers",
-            icon: <RiContactsLine />,
-        },
+        // {
+        //     name: "customers",
+        //     icon: <RiContactsLine />,
+        // },
         ],
     },
     {
@@ -553,13 +553,13 @@
             name: "taskboard",
             icon: <BsKanban />,
         },
-        {
-            name: "editor",
-            icon: <FiEdit />,
-        },
+        // {
+        //     name: "editor",
+        //     icon: <FiEdit />,
+        // },
         {
             name: "timer",
-            icon: <BiColorFill />,
+            icon: <MdOutlineTimer />,
         },
         ],
     },
@@ -579,26 +579,26 @@
             name: "bar",
             icon: <AiOutlineBarChart />,
         },
-        {
-            name: "pie",
-            icon: <FiPieChart />,
-        },
-        {
-            name: "financial",
-            icon: <RiStockLine />,
-        },
-        {
-            name: "color-mapping",
-            icon: <BsBarChart />,
-        },
-        {
-            name: "pyramid",
-            icon: <GiLouvrePyramid />,
-        },
-        {
-            name: "stacked",
-            icon: <AiOutlineBarChart />,
-        },
+        // {
+        //     name: "pie",
+        //     icon: <FiPieChart />,
+        // },
+        // {
+        //     name: "financial",
+        //     icon: <RiStockLine />,
+        // },
+        // {
+        //     name: "color-mapping",
+        //     icon: <BsBarChart />,
+        // },
+        // {
+        //     name: "pyramid",
+        //     icon: <GiLouvrePyramid />,
+        // },
+        // {
+        //     name: "stacked",
+        //     icon: <AiOutlineBarChart />,
+        // },
         ],
     },
     ];
@@ -654,8 +654,8 @@
     export const earningData = [
     {
         icon: <GrProjects />,
-        amount: "39,354",
-        percentage: "-4%",
+        amount: "0",
+        percentage: "0%",
         title: "Completed Task",
         iconColor: "#03C9D7",
         iconBg: "#E5FAFB",
@@ -663,31 +663,12 @@
     },
     {
         icon: <GoProjectRoadmap />,
-        amount: "4,396",
-        percentage: "+23%",
+        amount: "5",
+        // percentage: "+23%",
         title: "Active Projects",
         iconColor: "rgb(255, 244, 229)",
         iconBg: "rgb(254, 201, 15)",
         pcColor: "green-600",
-    },
-    {
-        icon: <FiBarChart />,
-        amount: "423,39",
-        percentage: "+38%",
-        title: "Sales",
-        iconColor: "rgb(228, 106, 118)",
-        iconBg: "rgb(255, 244, 229)",
-
-        pcColor: "green-600",
-    },
-    {
-        icon: <HiOutlineRefresh />,
-        amount: "39,354",
-        percentage: "-12%",
-        title: "Refunds",
-        iconColor: "rgb(0, 194, 146)",
-        iconBg: "rgb(235, 250, 242)",
-        pcColor: "red-600",
     },
     ];
 
@@ -3040,22 +3021,22 @@
 
     export const stackedChartData = [
     [
-        { x: "Jan", y: 111.1 },
-        { x: "Feb", y: 127.3 },
-        { x: "Mar", y: 143.4 },
+        // { x: "Jan", y: 111.1 },
+        // { x: "Feb", y: 127.3 },
+        // { x: "Mar", y: 143.4 },
         { x: "Apr", y: 159.9 },
         { x: "May", y: 159.9 },
-        { x: "Jun", y: 159.9 },
-        { x: "July", y: 159.9 },
+        // { x: "Jun", y: 159.9 },
+        // { x: "July", y: 159.9 },
     ],
     [
-        { x: "Jan", y: 111.1 },
-        { x: "Feb", y: 127.3 },
-        { x: "Mar", y: 143.4 },
+        // { x: "Jan", y: 111.1 },
+        // { x: "Feb", y: 127.3 },
+        // { x: "Mar", y: 143.4 },
         { x: "Apr", y: 159.9 },
         { x: "May", y: 159.9 },
-        { x: "Jun", y: 159.9 },
-        { x: "July", y: 159.9 },
+        // { x: "Jun", y: 159.9 },
+        // { x: "July", y: 159.9 },
     ],
     ];
 
@@ -3064,7 +3045,7 @@
         dataSource: stackedChartData[0],
         xName: "x",
         yName: "y",
-        name: "Budget",
+        name: "Completed",
         type: "StackingColumn",
         background: "blue",
     },
@@ -3073,7 +3054,7 @@
         dataSource: stackedChartData[1],
         xName: "x",
         yName: "y",
-        name: "Expense",
+        name: "Pending",
         type: "StackingColumn",
         background: "red",
     },

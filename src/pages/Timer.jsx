@@ -3,6 +3,7 @@ import React from 'react'
 import { useStateContext } from '../contexts/ContextProvider';
 import { PlayIcon, PauseIcon, RefreshIcon, SaveIcon, TrashIcon } from '@heroicons/react/outline';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { Header } from '../components';
 
 const Timer = () => {
   const {
@@ -34,8 +35,9 @@ const Timer = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-gray-100 h-screen flex flex-col justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-md w-80">
+    <div div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl ">
+    <Header category="App" title="Timer" />
+      <div className="bg-white p-6 rounded-lg shadow-md w-80 ">
         <input
           type="text"
           onChange={handleMinutesChange}

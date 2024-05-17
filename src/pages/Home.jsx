@@ -64,18 +64,44 @@ const Home = () => {
           <div className="flex justify-between">
             <p className="font-semibold text-xl">Statistics</p>
             <div className="flex items-center gap-4">
-              <p className="flex items-center gap-2 text-green-600 hover:drop-shadow-xl">
+              <p className="flex items-center gap-2 text-blue-600 hover:drop-shadow-xl">
                 <span>
                   <GoDotFill />
                 </span>
-                <span>Online</span>
+                <span>Completed</span>
               </p>
-              <p className="flex items-center gap-2 text-red-600 hover:drop-shadow-xl">
+              <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
                 <span>
                   <GoDotFill />
                 </span>
-                <span>Offline</span>
+                <span>Pending</span>
               </p>
+            </div>
+          </div>
+          <div className="mt-10 flex gap-10 flex-wrap justify-center">
+            <div className="border-r-1 border-color m-4 pr-10">
+              <div>
+                <p>
+                  <span className="text-3xl font-semibold">0</span>
+                  <span>0%</span>
+                </p>
+                <p>Completed</p>
+              </div>
+              <div className="mt-8">
+                <p>
+                  <span className="text-3xl font-semibold">5</span>
+                </p>
+                <p>Pending</p>
+              </div>
+              <div className="mt-5">
+                <SparkLine
+                currentColor='blue' id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color='blue'
+                />
+              </div>
+              <div></div>
+            </div>
+            <div>
+            <Stacked currentMode='blue' width="320px" height="360px" />
             </div>
           </div>
         </div>
