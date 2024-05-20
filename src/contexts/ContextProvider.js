@@ -26,6 +26,12 @@ export const ContextProvider = ({ children }) => {
   const [recordedTimes, setRecordedTimes] = useState([]);
 
   useEffect(() => {
+    // Load recorded times from localStorage when component mounts
+    const storedTimes = JSON.parse(localStorage.getItem('recordedTimes')) || [];
+    setRecordedTimes(storedTimes);
+  }, []);
+
+  useEffect(() => {
     let intervalId;
     if (timerRunning) {
       intervalId = setInterval(() => {
@@ -67,7 +73,11 @@ export const ContextProvider = ({ children }) => {
   const logTime = () => {
     const currentTime = new Date().toLocaleTimeString();
     const newRecord = `${currentTime} - ${minutes}m ${seconds}s`;
-    const updatedRecords = [...recordedTimes, newRecord];
+    // Get previous recorded times from localStorage
+    const storedTimes = JSON.parse(localStorage.getItem('recordedTimes')) || [];
+    // Add the new record to the list
+    const updatedRecords = [...storedTimes, newRecord];
+    // Update state and localStorage with the combined list
     setRecordedTimes(updatedRecords);
     localStorage.setItem("recordedTimes", JSON.stringify(updatedRecords));
   };
