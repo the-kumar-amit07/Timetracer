@@ -71,7 +71,7 @@ function TaskBoard(){
                   onDragStart={(e) => handleDragStart(e, event.Id)}
                 >
                   <p>{event.Subject}</p>
-                  <p className="text-sm text-gray-500">{event.StartTime}</p>
+                  <p className="text-sm text-gray-500">{formatDateTime(event.StartTime)}</p>
                 </div>
               ))}
           </div>
@@ -91,7 +91,7 @@ function TaskBoard(){
                   onDragStart={(e) => handleDragStart(e, event.Id)}
                 >
                   <p>{event.Subject}</p>
-                  <p className="text-sm text-gray-500">{event.StartTime}</p>
+                  <p className="text-sm text-gray-500">{formatDateTime(event.StartTime)}</p>
                 </div>
               ))}
           </div>
