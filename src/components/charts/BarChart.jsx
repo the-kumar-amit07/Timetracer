@@ -42,7 +42,6 @@ function BarChart(){
   return (
    <div className="font-open-sans">
      <ChartComponent
-      title="Total Logged Time per Month"
       primaryXAxis={{ valueType: "Category", title: "Months" }}
       primaryYAxis={{ labelFormat: "{value} min", title: "Total Logged Time (in minutes)" }}
       tooltip={{ enable: true }}

@@ -33,7 +33,6 @@ const PieChart = () => {
 
   return (
     <AccumulationChartComponent
-      title="Event Status Distribution"
       tooltip={{ enable: true }}
       legendSettings={{ visible: true }}
     >

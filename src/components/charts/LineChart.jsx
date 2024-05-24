@@ -50,7 +50,6 @@ const LineChart = () => {
 
   return (
     <ChartComponent
-      title="Logged Time Over Days"
       primaryXAxis={{ valueType: "DateTime", labelFormat: "dd/MM/yyyy", title: "Days" }}
       primaryYAxis={{ labelFormat: "{value} min", title: "Logged Time (in minutes)" }}
       tooltip={{ enable: true }}
