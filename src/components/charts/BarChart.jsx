@@ -46,8 +46,8 @@ function BarChart(){
       primaryYAxis={{ labelFormat: "{value} min", title: "Total Logged Time (in minutes)" }}
       tooltip={{ enable: true }}
       legendSettings={{ visible: true }}
-      className="font-sans"
-      style={{ fontFamily: "'Open Sans', sans-serif" }}
+      height="650px"
+      className="rounded-md"
     >
       <Inject services={[ColumnSeries, Category, Tooltip, Legend]} />
       <SeriesCollectionDirective>

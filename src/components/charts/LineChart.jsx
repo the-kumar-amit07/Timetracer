@@ -54,6 +54,8 @@ const LineChart = () => {
       primaryYAxis={{ labelFormat: "{value} min", title: "Logged Time (in minutes)" }}
       tooltip={{ enable: true }}
       legendSettings={{ visible: true }}
+      height="650px"
+      className="rounded-md"
     >
       <Inject services={[LineSeries, DateTime, Tooltip, Legend]} />
       <SeriesCollectionDirective>

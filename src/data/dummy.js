@@ -564,25 +564,25 @@
         ],
     },
     {
-        title: "Charts",
+        title: "Reports",
         links: [
-        {
-            name: "line",
-            icon: <AiOutlineStock />,
-        },
-        {
-            name: "area",
-            icon: <AiOutlineAreaChart />,
-        },
+        // {
+        //     name: "line",
+        //     icon: <AiOutlineStock />,
+        // },
+        // {
+        //     name: "area",
+        //     icon: <AiOutlineAreaChart />,
+        // },
 
-        {
-            name: "bar",
-            icon: <AiOutlineBarChart />,
-        },
-        {
-            name: "pie",
-            icon: <FiPieChart />,
-        },
+        // {
+        //     name: "bar",
+        //     icon: <AiOutlineBarChart />,
+        // },
+        // {
+        //     name: "pie",
+        //     icon: <FiPieChart />,
+        // },
         // {
         //     name: "financial",
         //     icon: <RiStockLine />,

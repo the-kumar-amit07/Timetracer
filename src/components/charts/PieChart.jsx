@@ -35,6 +35,8 @@ const PieChart = () => {
     <AccumulationChartComponent
       tooltip={{ enable: true }}
       legendSettings={{ visible: true }}
+      height="650px"
+      className="rounded-md"
     >
       <Inject services={[AccumulationLegend, PieSeries, AccumulationTooltip, AccumulationDataLabel]} />
       <AccumulationSeriesCollectionDirective>
