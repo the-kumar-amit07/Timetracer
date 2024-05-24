@@ -9,7 +9,6 @@ import {
   Calender,
   Employees,
   Stacked,
-  Pyramid,
   Customers,
   TaskBoard,
   Area,
@@ -21,6 +20,7 @@ import {
   Line,
   Timer,
   TeamStatus,
+  Analytics,
 } from "./pages";
 import {useStateContext} from './contexts/ContextProvider'
 import "./App.css";
@@ -88,7 +88,7 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/financial" element={<Financial />} />
               <Route path="/color-mapping" element={<ColorMapping />} />
-              <Route path="/pyramid" element={<Pyramid />} />
+              <Route path="/analytics" element={<Analytics />} />
               <Route path="/stacked" element={<Stacked />} />
             </Routes>
           </div>

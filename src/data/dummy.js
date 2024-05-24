@@ -579,10 +579,10 @@
             name: "bar",
             icon: <AiOutlineBarChart />,
         },
-        // {
-        //     name: "pie",
-        //     icon: <FiPieChart />,
-        // },
+        {
+            name: "pie",
+            icon: <FiPieChart />,
+        },
         // {
         //     name: "financial",
         //     icon: <RiStockLine />,
@@ -591,10 +591,10 @@
         //     name: "color-mapping",
         //     icon: <BsBarChart />,
         // },
-        // {
-        //     name: "pyramid",
-        //     icon: <GiLouvrePyramid />,
-        // },
+        {
+            name: "analytics",
+            icon: <GiLouvrePyramid />,
+        },
         // {
         //     name: "stacked",
         //     icon: <AiOutlineBarChart />,

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-const Pyramid = () => {
+const Analytics = () => {
   return (
     <div>Pyramid</div>
   )
 }
 
-export default Pyramid
+export default Analytics
