@@ -40,8 +40,12 @@ const Calender = () => {
           // Handle event creation and editing
           if (args.requestType === "eventCreated") {
             addEvent(args.data[0]);
+            console.log("request type :" , args.requestType);
           } else if (args.requestType === "eventChanged") {
             updateEvent(args.data[0]);
+          }
+          else if ( args.requestType === "eventRemoved"){
+            deleteEvent(args.data[0].Id);
           }
         }}
         eventClick={handleEventClick} // Event Click Handler
