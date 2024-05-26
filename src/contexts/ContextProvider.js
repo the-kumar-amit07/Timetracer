@@ -118,7 +118,7 @@ export const ContextProvider = ({ children }) => {
   const addEvent = (event) => {
     const updatedEvents = [...scheduleEvents, event];
     setScheduleEvents(updatedEvents);
-    console.log("evnet i m trying to see", event);
+    console.log("event i m trying to see", event);
     saveToLocalStorage(updatedEvents);
   };
 
