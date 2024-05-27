@@ -11,7 +11,7 @@ import {
 } from "@syncfusion/ej2-react-charts";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-function BarChart(){
+function BarChart() {
   const { recordedTimes } = useStateContext();
   const [chartData, setChartData] = useState([]);
 
@@ -21,7 +21,10 @@ function BarChart(){
       const [loggedMinutes] = duration.split("m ");
       const totalMinutes = parseInt(loggedMinutes);
 
-      const monthYear = new Date().toLocaleString('default', { month: 'short', year: 'numeric' });
+      const monthYear = new Date().toLocaleString("default", {
+        month: "short",
+        year: "numeric",
+      });
 
       if (!acc[monthYear]) {
         acc[monthYear] = 0;
@@ -31,7 +34,7 @@ function BarChart(){
       return acc;
     }, {});
 
-    const data = Object.keys(timePerMonth).map(monthYear => ({
+    const data = Object.keys(timePerMonth).map((monthYear) => ({
       monthYear,
       minutes: timePerMonth[monthYear],
     }));
@@ -40,28 +43,31 @@ function BarChart(){
   }, [recordedTimes]);
 
   return (
-   <div className="font-open-sans">
-     <ChartComponent
-      primaryXAxis={{ valueType: "Category", title: "Months" }}
-      primaryYAxis={{ labelFormat: "{value} min", title: "Total Logged Time (in minutes)" }}
-      tooltip={{ enable: true }}
-      legendSettings={{ visible: true }}
-      height="650px"
-      className="rounded-md"
-    >
-      <Inject services={[ColumnSeries, Category, Tooltip, Legend]} />
-      <SeriesCollectionDirective>
-        <SeriesDirective
-          dataSource={chartData}
-          xName="monthYear"
-          yName="minutes"
-          type="Column"
-          name="Logged Time"
-        />
-      </SeriesCollectionDirective>
-    </ChartComponent>
-   </div>
+    <div className="font-open-sans">
+      <ChartComponent
+        primaryXAxis={{ valueType: "Category", title: "Months" }}
+        primaryYAxis={{
+          labelFormat: "{value} min",
+          title: "Total Logged Time (in minutes)",
+        }}
+        tooltip={{ enable: true }}
+        legendSettings={{ visible: true }}
+        height="650px"
+        className="rounded-md"
+      >
+        <Inject services={[ColumnSeries, Category, Tooltip, Legend]} />
+        <SeriesCollectionDirective>
+          <SeriesDirective
+            dataSource={chartData}
+            xName="monthYear"
+            yName="minutes"
+            type="Column"
+            name="Logged Time"
+          />
+        </SeriesCollectionDirective>
+      </ChartComponent>
+    </div>
   );
-};
+}
 
-export default BarChart
+export default BarChart;
