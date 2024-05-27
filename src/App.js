@@ -25,6 +25,11 @@ import {
 import {useStateContext} from './contexts/ContextProvider'
 import "./App.css";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+import LogIn from "./pages/Authentication/LogIn";
+import SignUp from "./pages/Authentication/SignUp";
+
+
 
 
 function App() {
@@ -66,30 +71,35 @@ function App() {
             </div>
           <div>
             <Routes>
+              {/* Auth */}
+              <Route path="/signup" element={<SignUp/>} />
+              <Route path="/login" element={<LogIn/>} />
+
               {/* Home */}
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              
 
               {/* Pages */}
-              <Route path="/teamstatus" element={<TeamStatus />} />
-              <Route path="/employees" element={<Employees />} />
-              <Route path="/customers" element={<Customers />} />
+              <Route path="/teamstatus" element={<ProtectedRoute><TeamStatus /></ProtectedRoute>} />
+              <Route path="/employees" element={<ProtectedRoute><Employees /></ProtectedRoute>} />
+              <Route path="/customers" element={<ProtectedRoute><Customers /></ProtectedRoute>} />
 
               {/* Apps */}
-              <Route path="/taskboard" element={<TaskBoard/>} />
-              <Route path="/editor" element={<Editor />} />
-              <Route path="/calendar" element={<Calender />} />
-              <Route path="/timer" element={<Timer />} />
+              <Route path="/taskboard" element={<ProtectedRoute><TaskBoard/></ProtectedRoute>} />
+              <Route path="/editor" element={<ProtectedRoute><Editor /></ProtectedRoute>} />
+              <Route path="/calendar" element={<ProtectedRoute><Calender /></ProtectedRoute>} />
+              <Route path="/timer" element={<ProtectedRoute><Timer /></ProtectedRoute>} />
 
               {/* Charts */}
-              <Route path="/line" element={<Line />} />
-              <Route path="/area" element={<Area />} />
-              <Route path="/bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
-              <Route path="/financial" element={<Financial />} />
-              <Route path="/color-mapping" element={<ColorMapping />} />
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/stacked" element={<Stacked />} />
+              <Route path="/line" element={<ProtectedRoute><Line /></ProtectedRoute>} />
+              <Route path="/area" element={<ProtectedRoute><Area /></ProtectedRoute>} />
+              <Route path="/bar" element={<ProtectedRoute><Bar /></ProtectedRoute>} />
+              <Route path="/pie" element={<ProtectedRoute><Pie /></ProtectedRoute>} />
+              <Route path="/financial" element={<ProtectedRoute><Financial /></ProtectedRoute>} />
+              <Route path="/color-mapping" element={<ProtectedRoute><ColorMapping /></ProtectedRoute>} />
+              <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
+              <Route path="/stacked" element={<ProtectedRoute><Stacked /></ProtectedRoute>} />
             </Routes>
           </div>
           <Footer />

@@ -1,7 +1,19 @@
 import React from "react";
 import { ArrowRight } from 'lucide-react'
-
+import { useForm } from "react-hook-form";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {logIn} = useStateContext();
+    const navigate = useNavigate();
+
+    const onSubmit = (data) => {
+        localStorage.setItem("user",JSON.stringify(data))
+        logIn(data);
+        navigate('/')
+    }
+
     return (
         <section>
             <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -33,7 +45,7 @@ function SignUp() {
                     Sign In
                 </a>
                 </p>
-                <form action="#" method="POST" className="mt-8">
+                <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5">
                     <div>
                     <label htmlFor="name" className="text-base font-medium text-gray-900">
@@ -60,6 +72,13 @@ function SignUp() {
                         type="email"
                         placeholder="Email"
                         id="email"
+                        {
+                            ...register("email",
+                                {
+                                    required:true
+                                }
+                            )
+                        }
                         ></input>
                     </div>
                     </div>
@@ -76,12 +95,20 @@ function SignUp() {
                         type="password"
                         placeholder="Password"
                         id="password"
+                        {
+                            ...register("password",
+                                {
+                                    required : true
+                                }
+                            )
+                        }
                         ></input>
+                        {errors.password && <span>This field is required</span>}
                     </div>
                     </div>
                     <div>
                     <button
-                        type="button"
+                        type="submit"
                         className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                     >
                         Create Account <ArrowRight className="ml-2" size={16} />

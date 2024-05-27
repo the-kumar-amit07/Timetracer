@@ -25,7 +25,15 @@ export const ContextProvider = ({ children }) => {
   const [timerRunning, setTimerRunning] = useState(false);
   const [recordedTimes, setRecordedTimes] = useState([]);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
+    // Check if user is authenticated
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsAuthenticated(true);
+    }
+
     // Load recorded times from localStorage when component mounts
     const storedTimes = JSON.parse(localStorage.getItem('recordedTimes')) || [];
     setRecordedTimes(storedTimes);
@@ -148,6 +156,23 @@ export const ContextProvider = ({ children }) => {
     }));
   };
 
+  // const signUp = (userData) => {
+  //   console.log("User data", userData);
+  //   localStorage.setItem("user",JSON.stringify(userData))
+  //   setUser(userData)
+  // }
+
+  const logIn = (userData) => {
+    console.log("User data", userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+    setIsAuthenticated(true);
+  }
+
+  const logOut = () =>{
+    localStorage.removeItem('user');
+    setIsAuthenticated(false);
+  }
+
   return (
     <StateContext.Provider
       value={{
@@ -174,6 +199,9 @@ export const ContextProvider = ({ children }) => {
         logTime,
         deleteRecord,
         setMinutes,
+        isAuthenticated,
+        logIn,
+        logOut
       }}
     >
       {children}

@@ -1,7 +1,21 @@
 import React from 'react'
 import { ArrowRight } from "lucide-react";
+import { useForm } from 'react-hook-form';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 function LogIn() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {logIn} = useStateContext();
+
+    const onSubmit = (data) =>{
+        const storedUser = JSON.parse(localStorage.getItem("user"))
+        if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
+            logIn(storedUser)
+        }else {
+            alert("Invalid Credentials")
+        }
+    }
+
     return (
         <section>
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -33,7 +47,7 @@ function LogIn() {
                 Create a free account
                 </a>
             </p>
-            <form action="#" method="POST" className="mt-8">
+            <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5">
                 <div>
                     <label
@@ -48,6 +62,11 @@ function LogIn() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="email"
                         placeholder="Email"
+                        {...register("email",
+                            {
+                                required : true
+                            }
+                        )}
                     ></input>
                     </div>
                 </div>
@@ -74,12 +93,20 @@ function LogIn() {
                         className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                         type="password"
                         placeholder="Password"
+                        {
+                            ...register("passeord" , 
+                                {
+                                    required : true
+                                }
+                            )
+                        }
                     ></input>
+                    {errors.password && <span>This field is required</span>}
                     </div>
                 </div>
                 <div>
                     <button
-                    type="button"
+                    type="submit"
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                     >
                     Get started <ArrowRight className="ml-2" size={16} />
