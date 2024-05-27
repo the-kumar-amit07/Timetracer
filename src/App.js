@@ -33,14 +33,15 @@ import SignUp from "./pages/Authentication/SignUp";
 
 
 function App() {
-  const {activeMenu} = useStateContext()
+  const {activeMenu , isAuthenticated} = useStateContext()
   return (
     
       <div>
         
         <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
+        {isAuthenticated && (
+            <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position="Top">
               <button
                 type="button"
@@ -52,23 +53,25 @@ function App() {
               </button>
             </TooltipComponent>
           </div>
-          {activeMenu ? (
+        )}
+          {isAuthenticated && activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
               <Sidebar />
             </div>
-          ) : (
+          ) : isAuthenticated ?(
             <div className="w-0 dark: bg-secondary-dark-bg">
               <Sidebar />
             </div>
-          )}
+          ): null}
           <div
-            className={activeMenu
+            className={isAuthenticated && activeMenu
               ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
               : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
-            }>
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
+            }> {isAuthenticated && (
+              <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
               <Navbar />
             </div>
+            )}
           <div>
             <Routes>
               {/* Auth */}
@@ -102,7 +105,7 @@ function App() {
               <Route path="/stacked" element={<ProtectedRoute><Stacked /></ProtectedRoute>} />
             </Routes>
           </div>
-          <Footer />
+          {isAuthenticated && <Footer /> }
           </div>
         </div>
       </BrowserRouter>
