@@ -156,12 +156,6 @@ export const ContextProvider = ({ children }) => {
     }));
   };
 
-  // const signUp = (userData) => {
-  //   console.log("User data", userData);
-  //   localStorage.setItem("user",JSON.stringify(userData))
-  //   setUser(userData)
-  // }
-
   const logIn = (userData) => {
     console.log("User data", userData);
     localStorage.setItem('user', JSON.stringify(userData));
