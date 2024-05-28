@@ -2,16 +2,19 @@ import React from 'react'
 import { ArrowRight } from "lucide-react";
 import { useForm } from 'react-hook-form';
 import { useStateContext } from '../../contexts/ContextProvider';
+import { useNavigate } from "react-router-dom";
 import logo from "../../data/logo.png"
 
 function LogIn() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {logIn} = useStateContext();
+    const navigate = useNavigate();
 
     const onSubmit = (data) =>{
         const storedUser = JSON.parse(localStorage.getItem("user"))
         if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
             logIn(storedUser)
+            navigate('/home')
         }else {
             alert("Invalid Credentials")
         }

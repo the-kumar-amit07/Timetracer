@@ -12,7 +12,7 @@ function SignUp() {
     const onSubmit = (data) => {
         localStorage.setItem("user",JSON.stringify(data))
         logIn(data);
-        navigate('/')
+        navigate('/home')
     }
 
     return (
@@ -61,6 +61,13 @@ function SignUp() {
                         type="text"
                         placeholder="Full Name"
                         id="name"
+                        {
+                            ...register("name",
+                                {
+                                    required: "Full Name is required",
+                                }
+                            )
+                        }
                         ></input>
                     </div>
                     </div>
