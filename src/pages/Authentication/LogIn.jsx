@@ -14,7 +14,7 @@ function LogIn() {
         const storedUser = JSON.parse(localStorage.getItem("user"))
         if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
             logIn(storedUser)
-            navigate('/home')
+            navigate('/')
         }else {
             alert("Invalid Credentials")
         }

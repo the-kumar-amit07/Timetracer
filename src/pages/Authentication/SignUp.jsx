@@ -12,7 +12,7 @@ function SignUp() {
     const onSubmit = (data) => {
         localStorage.setItem("user",JSON.stringify(data))
         logIn(data);
-        navigate('/home')
+        navigate('/')
     }
 
     return (

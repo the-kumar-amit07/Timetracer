@@ -27,20 +27,22 @@ const Stacked = () => {
       Done: 0,
     }));
 
+    // Log initial data structure
+    console.log('Initial Data Structure:', data);
+
     // Populate the data structure
     scheduleEvents.forEach(event => {
       const eventDate = new Date(event.date);
       const monthName = months[eventDate.getMonth()];
       const status = event.Status.replace(' ', '') || "Todo";
-
-      // Ensure status is one of the expected statuses
-      if (["Todo", "InProgress", "Done"].includes(status)) {
-        const monthData = data.find(d => d.month === monthName);
-        if (monthData) {
-          monthData[status] += 1;
-        }
+      const monthData = data.find(d => d.month === monthName);
+      if (monthData) {
+        monthData[status] += 1;
       }
     });
+
+    // Log final data structure after processing events
+    console.log('Final Data Structure:', data);
 
     setChartData(data);
   }, [scheduleEvents]);

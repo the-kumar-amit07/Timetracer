@@ -2,6 +2,7 @@
 import React from "react";
 
 import { BarChart, Header, LineChart, PieChart } from "../../components";
+import Stacked from "./Stacked";
 
 const Analytics = () => {
   return (
@@ -27,7 +28,7 @@ const Analytics = () => {
             <h2 className="text-xl font-semibold mb-4">
               Logged Time Over Days
             </h2>
-            <LineChart />
+            <Stacked/>
           </div>
         </div>
       </div>
