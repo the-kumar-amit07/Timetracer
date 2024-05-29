@@ -30,74 +30,59 @@ function TaskBoard(){
   };
 
   return (
-    <div div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-    <Header category="App" title="Task Board" />
-      <div className="w-full max-w-5xl">
-        <div className="grid grid-cols-3 gap-4">
-          <div
-            className="bg-gray-200 rounded p-4"
-            onDragOver={(e) => handleDragOver(e)}
-            onDrop={(e) => handleDrop(e, "Todo")}
-          >
-            <h2 className="text-lg font-semibold mb-4">Todo</h2>
-            {scheduleEvents
-              .filter((event) => event.Status === "Todo")
-              .map((event) => (
-                <div
-                  key={event.Id}
-                  className="bg-white p-2 rounded mb-2 cursor-pointer"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, event.Id)}
-                >
-                  <p>{event.Subject}</p>
-                  <p className="text-sm text-gray-500">{formatDateTime(event.StartTime)}</p>
-
-                </div>
-              ))}
-          </div>
-          <div
-            className="bg-gray-200 rounded p-4"
-            onDragOver={(e) => handleDragOver(e)}
-            onDrop={(e) => handleDrop(e, "In Progress")}
-          >
-            <h2 className="text-lg font-semibold mb-4">In Progress</h2>
-            {scheduleEvents
-              .filter((event) => event.Status === "In Progress")
-              .map((event) => (
-                <div
-                  key={event.Id}
-                  className="bg-white p-2 rounded mb-2 cursor-pointer"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, event.Id)}
-                >
-                  <p>{event.Subject}</p>
-                  <p className="text-sm text-gray-500">{formatDateTime(event.StartTime)}</p>
-                </div>
-              ))}
-          </div>
-          <div
-            className="bg-gray-200 rounded p-4"
-            onDragOver={(e) => handleDragOver(e)}
-            onDrop={(e) => handleDrop(e, "Done")}
-          >
-            <h2 className="text-lg font-semibold mb-4">Done</h2>
-            {scheduleEvents
-              .filter((event) => event.Status === "Done")
-              .map((event) => (
-                <div
-                  key={event.Id}
-                  className="bg-white p-2 rounded mb-2 cursor-pointer"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, event.Id)}
-                >
-                  <p>{event.Subject}</p>
-                  <p className="text-sm text-gray-500">{formatDateTime(event.StartTime)}</p>
-                </div>
-              ))}
-          </div>
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-lg shadow-lg">
+      <Header category="App" title="Task Board" />
+      <div className="grid grid-cols-3 gap-6">
+        <div className="bg-gray-100 rounded p-4 shadow-md">
+          <h2 className="text-lg font-semibold mb-4">Todo</h2>
+          {scheduleEvents
+            .filter((event) => event.Status === "Todo")
+            .map((event) => (
+              <div
+                key={event.Id}
+                className="bg-white p-4 rounded mb-4 cursor-pointer shadow-sm hover:shadow-lg transition duration-300"
+                draggable
+                onDragStart={(e) => handleDragStart(e, event.Id)}
+              >
+                <p className="text-lg font-semibold">{event.Subject}</p>
+                <p className="text-sm text-gray-500 mt-2">{formatDateTime(event.StartTime)}</p>
+              </div>
+            ))}
+        </div>
+        <div className="bg-gray-100 rounded p-4 shadow-md">
+          <h2 className="text-lg font-semibold mb-4">In Progress</h2>
+          {scheduleEvents
+            .filter((event) => event.Status === "In Progress")
+            .map((event) => (
+              <div
+                key={event.Id}
+                className="bg-white p-4 rounded mb-4 cursor-pointer shadow-sm hover:shadow-lg transition duration-300"
+                draggable
+                onDragStart={(e) => handleDragStart(e, event.Id)}
+              >
+                <p className="text-lg font-semibold">{event.Subject}</p>
+                <p className="text-sm text-gray-500 mt-2">{formatDateTime(event.StartTime)}</p>
+              </div>
+            ))}
+        </div>
+        <div className="bg-gray-100 rounded p-4 shadow-md">
+          <h2 className="text-lg font-semibold mb-4">Done</h2>
+          {scheduleEvents
+            .filter((event) => event.Status === "Done")
+            .map((event) => (
+              <div
+                key={event.Id}
+                className="bg-white p-4 rounded mb-4 cursor-pointer shadow-sm hover:shadow-lg transition duration-300"
+                draggable
+                onDragStart={(e) => handleDragStart(e, event.Id)}
+              >
+                <p className="text-lg font-semibold">{event.Subject}</p>
+                <p className="text-sm text-gray-500 mt-2">{formatDateTime(event.StartTime)}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>
   );
 };
-export default TaskBoard
+export default TaskBoard;

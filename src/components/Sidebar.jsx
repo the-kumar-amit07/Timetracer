@@ -16,7 +16,7 @@ const Sidebar = () => {
   }
 
   const activeLink = "flex item-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-black text-md m-2 "
-  const normalLink = "flex item-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 "
+  const normalLink = "flex item-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-sky-300 hover:text-white m-2 "
 
   return (
     <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
@@ -35,7 +35,7 @@ const Sidebar = () => {
               <button
                 type="button"
                 onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
-                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden "
               >
                 <MdOutlineCancel />
               </button>
