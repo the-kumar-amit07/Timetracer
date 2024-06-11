@@ -20,9 +20,6 @@ const Calender = () => {
     useStateContext();
   const handleEventClick = (args) => {
     console.log("Event click args:", args);
-    if (args && args.data && args.data[0]) {
-      deleteEvent(args.data[0].Id);
-    }
   };
 
   return (
@@ -39,12 +36,13 @@ const Calender = () => {
         actionComplete={(args) => {
           // Handle event creation and editing
           if (args.requestType === "eventCreated") {
-            addEvent(args.data[0]);
+            addEvent(args.data);
             console.log("request type :", args.requestType);
+            console.log("Event Id : " , args.data.Id);
           } else if (args.requestType === "eventChanged") {
-            updateEvent(args.data[0]);
+            updateEvent(args.data);
           } else if (args.requestType === "eventRemoved") {
-            deleteEvent(args.data[0].Id);
+            deleteEvent(args.data.Id);
           }
         }}
         eventClick={handleEventClick} // Event Click Handler

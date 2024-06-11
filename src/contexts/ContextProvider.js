@@ -99,11 +99,6 @@ export const ContextProvider = ({ children }) => {
   //for Schedule Data
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("scheduleData"));
-    // if (data) {
-    //   console.log("scheduleEvents:", data)
-    //   setScheduleEvents(data);
-    // }
-
     if (data) {
       // Ensure each event object has a Status property
       const updatedEvents = data.map((event) => ({
