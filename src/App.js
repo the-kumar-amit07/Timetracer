@@ -76,8 +76,6 @@ function App() {
                 {/* Auth */}
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={isAuthenticated ? <Navigate  to="/" /> : <LogIn />} />
-
-
                 {/* Home */}
                 <Route
                   path="/"
