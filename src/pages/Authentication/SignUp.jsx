@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowRight } from 'lucide-react'
 import { useForm } from "react-hook-form";
 import { useStateContext } from "../../contexts/ContextProvider";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../data/logo.png"
 function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -28,12 +28,18 @@ function SignUp() {
                 </h2>
                 <p className="mt-2 text-center text-base text-gray-600">
                 Already have an account?{' '}
+                <NavLink
+                to='/login'
+                className="font-medium text-black transition-all duration-200 hover:underline"
+                >
+                Sign In
+                </NavLink>
                 <a
                     href="#"
                     title=""
-                    className="font-medium text-black transition-all duration-200 hover:underline"
+                    
                 >
-                    Sign In
+                    
                 </a>
                 </p>
                 <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit(onSubmit)}>

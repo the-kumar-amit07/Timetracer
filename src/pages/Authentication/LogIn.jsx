@@ -2,7 +2,7 @@ import React from 'react'
 import { ArrowRight } from "lucide-react";
 import { useForm } from 'react-hook-form';
 import { useStateContext } from '../../contexts/ContextProvider';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../data/logo.png"
 
 function LogIn() {
@@ -33,13 +33,10 @@ function LogIn() {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600 ">
                 Don&apos;t have an account?{" "}
-                <a
-                href="#"
-                title=""
+                <NavLink
+                to='/signup'
                 className="font-semibold text-black transition-all duration-200 hover:underline"
-                >
-                Create a free account
-                </a>
+                >Create a free account</NavLink>
             </p>
             <form action="#" method="POST" className="mt-8" onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5">
